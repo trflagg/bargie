@@ -9,6 +9,8 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: true,
     unique: true,
+    minlength: 3,
+    maxlength: 255,
   },
 });
 

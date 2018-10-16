@@ -9,12 +9,12 @@ describe('UserModel', () => {
   it('requires username', () => {
     const user = new UserModel();
 
-    try {
-      return user.validate().catch(error => {
-        expect(error.name).toEqual('ValidationError');
-      });
-    } catch (e) {
-      return null;
-    }
+    return user.validate().then(
+        resolves => {
+          throw new Error('test should not resolve');
+        },
+        error => {
+          return expect(error.name).toEqual('ValidationError');
+        });
   });
 });
