@@ -11,5 +11,8 @@ module.exports = {
       lines: 80,
       statements: -10
     }
-  }
+  },
+  globalSetup: './test/mongodb-memory-setup.js',
+  globalTeardown: './test/mongodb-memory-teardown.js',
+  testEnvironment: './test/mongo-environment.js',
 };

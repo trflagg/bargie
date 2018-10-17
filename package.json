@@ -13,7 +13,7 @@
     "compile": "tsc -p .",
     "fix": "gts fix",
     "prepare": "npm run compile",
-    "pretest": "npm run compile",
+    "pretest": "npm run compile; npm run check",
     "posttest": "npm run check"
   },
   "husky": {
@@ -38,6 +38,8 @@
     "gts": "^0.8.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "mongodb": "^3.1.8",
+    "mongodb-memory-server": "^2.4.3",
     "mongoose": "^5.3.4",
     "ts-jest": "^23.10.4",
     "typescript": "~2.8.0"
