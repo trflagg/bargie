@@ -1,9 +1,12 @@
 import {Document, Model, model, Schema, Types} from 'mongoose';
 
-export interface CharacterInterface extends Document {
+export interface CharacterPrimitives {
   name: string;
-  gender: string;
+  gender?: string;
   description?: string;
+}
+
+export interface CharacterInterface extends CharacterPrimitives, Document {
   user: Types.ObjectId;
   story: Types.ObjectId;
   location: Types.ObjectId;
