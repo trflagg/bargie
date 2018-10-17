@@ -1,12 +1,15 @@
 import {Document, Model, model, Schema, Types} from 'mongoose';
 
+import {MessageHolderInterface, MessageHolderSchema, MessageRecordInterface, MessageRecordSchema} from './messageHolder';
+
 export interface CharacterPrimitives {
   name: string;
   gender?: string;
   description?: string;
 }
 
-export interface CharacterInterface extends CharacterPrimitives, Document {
+export interface CharacterInterface extends CharacterPrimitives,
+                                            MessageHolderInterface, Document {
   user: Types.ObjectId;
   story: Types.ObjectId;
   location: Types.ObjectId;
@@ -40,6 +43,8 @@ const CharacterSchema: Schema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Location',
       },
+      messages: [MessageRecordSchema],
+      children: [MessageHolderSchema],
     },
     {timestamps: true});
 
