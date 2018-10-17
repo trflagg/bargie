@@ -13,39 +13,4 @@ describe('CharacterModel', () => {
     character.story = story._id;
     return character.validate();
   });
-
-  it('validates required fields', () => {
-    const character = new CharacterModel();
-    return character.validate()
-        .then(
-            resolve => {
-              throw new Error('test should not resolve');
-            },
-            error => {
-              expect(error.name).toEqual('ValidationError');
-              character.name = 'teststory';
-              return character.validate();
-            })
-        .then(
-            resolve => {
-              throw new Error('test should not resolve');
-            },
-            error => {
-              expect(error.name).toEqual('ValidationError');
-              const user = new UserModel();
-              character.user = user._id;
-              return character.validate();
-            })
-        .then(
-            resolve => {
-              throw new Error('test should not resolve');
-            },
-            error => {
-              expect(error.name).toEqual('ValidationError');
-              const story = new StoryModel();
-              character.story = story._id;
-              console.log('taylor');
-              return character.validate();
-            });
-  });
 });
