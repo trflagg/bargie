@@ -5,5 +5,7 @@ export async function newUser(props: {
 }): Promise<UserInterface> {
   const user = new UserModel({username: props.username});
 
+  user.save();
+
   return user;
 }

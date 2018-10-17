@@ -4,7 +4,7 @@
   "description": "Backend interactive engine",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:watch-coverage": "jest --watch --coverage",
     "tsc:watch": "tsc --watch",
