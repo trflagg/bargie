@@ -5,19 +5,21 @@ export interface StoryInterface extends Document {
   user: Types.ObjectId;
 }
 
-const StorySchema: Schema = new Schema({
-  name: {
-    type: String,
-    minlength: 3,
-    maxlength: 255,
-    required: true,
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'User',
-  },
-});
+const StorySchema: Schema = new Schema(
+    {
+      name: {
+        type: String,
+        minlength: 3,
+        maxlength: 255,
+        required: true,
+      },
+      user: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User',
+      },
+    },
+    {timestamps: true});
 
 StorySchema.index({user: 1, name: 1});
 

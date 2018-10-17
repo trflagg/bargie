@@ -11,19 +11,15 @@ describe('UserHandler', () => {
   });
 
   it('can create a new user', async () => {
-    expect.assertions(2);
+    expect.assertions(4);
     const user = await userHandler.newUser({
       username: 'Tester',
     });
     expect(user).not.toBe(null);
     expect(user.username).toEqual('Tester');
-  });
-
-  it('can find a user by username', async () => {
-    expect.assertions(2);
-    const user = await userHandler.userByUsername('Tester');
-    expect(user).not.toBe(null);
-    expect(user.username).toEqual('Tester');
+    const foundUser = await userHandler.userByUsername('Tester');
+    expect(foundUser).not.toBe(null);
+    expect(foundUser.username).toEqual('Tester');
   });
 
   it('throws error if user not found', async () => {
