@@ -6,6 +6,7 @@ export interface CharacterInterface extends Document {
   description?: string;
   user: Types.ObjectId;
   story: Types.ObjectId;
+  location: Types.ObjectId;
 }
 
 const CharacterSchema: Schema = new Schema({
@@ -30,6 +31,10 @@ const CharacterSchema: Schema = new Schema({
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'Story',
+  },
+  location: {
+    type: Schema.Types.ObjectId,
+    ref: 'Location',
   },
 });
 

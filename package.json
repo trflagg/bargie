@@ -4,7 +4,7 @@
   "description": "Backend interactive engine",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:watch-coverage": "jest --watch --coverage",
     "tsc:watch": "tsc --watch",
@@ -18,7 +18,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test -- --coverage"
+      "pre-commit": "npm test"
     }
   },
   "repository": {
