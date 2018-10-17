@@ -13,8 +13,7 @@
     "compile": "tsc -p .",
     "fix": "gts fix",
     "prepare": "npm run compile",
-    "pretest": "npm run compile; npm run check",
-    "posttest": "npm run check"
+    "pretest": "npm run compile; npm run fix"
   },
   "husky": {
     "hooks": {

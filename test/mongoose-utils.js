@@ -24,11 +24,9 @@ function connect() {
     mongoose.Promise = Promise;
 
     const options = {
-      server: {
         auto_reconnect: true,
         reconnectTries: Number.MAX_VALUE,
         reconnectInterval: 1000,
-      },
     };
 
     mongoose.connect(mongoUri, options);

@@ -5,7 +5,15 @@ export async function newUser(props: {
 }): Promise<UserInterface> {
   const user = new UserModel({username: props.username});
 
-  user.save();
+  await user.save();
 
+  return user;
+}
+
+export async function userByUsername(username: string): Promise<UserInterface> {
+  const user = await UserModel.findOne({username});
+  if (!user) {
+    throw new Error(`User with username ${username} not found`);
+  }
   return user;
 }
