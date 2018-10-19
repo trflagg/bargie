@@ -2,7 +2,7 @@ import {Document, Model, model, Schema, Types} from 'mongoose';
 
 export interface StoryInterface extends Document {
   name: string;
-  user: Types.ObjectId;
+  owner: Types.ObjectId;
 }
 
 const StorySchema: Schema = new Schema(
@@ -13,15 +13,14 @@ const StorySchema: Schema = new Schema(
         maxlength: 255,
         required: true,
       },
-      user: {
+      owner: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: 'User',
       },
     },
     {timestamps: true});
 
-StorySchema.index({user: 1, name: 1});
+StorySchema.index({owner: 1, name: 1});
 
 export const StoryModel: Model<StoryInterface> =
     model<StoryInterface>('Story', StorySchema);

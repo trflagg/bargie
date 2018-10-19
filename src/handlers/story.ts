@@ -1,13 +1,11 @@
-import {StoryInterface, StoryModel} from '../models/story';
-import {UserInterface} from '../models/user';
+import * as mongoose from 'mongoose';
 
-export async function createStory(
-    props: {
-      name: string,
-    },
-    user: UserInterface): Promise<StoryInterface> {
+import {StoryInterface, StoryModel} from '../models/story';
+
+export async function createStory(props: {
+  name: string, owner: mongoose.Types.ObjectId;
+}): Promise<StoryInterface> {
   const story = new StoryModel(props);
-  story.user = user._id;
 
   await story.save();
 

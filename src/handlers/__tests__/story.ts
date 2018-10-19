@@ -1,5 +1,6 @@
+import * as mongoose from 'mongoose';
+
 import {connectToTestDB, disconnectToTestDB} from '../../../test/mongoose-utils.js';
-import {UserModel} from '../../models/user';
 import * as storyHandler from '../story';
 
 describe('StoryHandler', () => {
@@ -12,14 +13,15 @@ describe('StoryHandler', () => {
   });
 
   it('can create a new story', async () => {
-    const user = new UserModel();
+    const owner = new mongoose.Types.ObjectId();
     const story = await storyHandler.createStory(
         {
           name: 'Test Story',
+          owner,
         },
-        user);
+    );
     expect(story).not.toBe(null);
     expect(story.name).toEqual('Test Story');
-    expect(story.user).toEqual(user._id);
+    expect(story.owner).toEqual(owner);
   });
 });

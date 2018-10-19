@@ -10,7 +10,7 @@ export interface CharacterPrimitives {
 
 export interface CharacterInterface extends CharacterPrimitives,
                                             MessageHolderInterface, Document {
-  user: Types.ObjectId;
+  owner: Types.ObjectId;
   story: Types.ObjectId;
   location: Types.ObjectId;
 }
@@ -29,10 +29,9 @@ const CharacterSchema: Schema = new Schema(
       description: {
         type: String,
       },
-      user: {
+      owner: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: 'User',
       },
       story: {
         type: Schema.Types.ObjectId,
