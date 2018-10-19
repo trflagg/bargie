@@ -1,5 +1,5 @@
 {
-  "extends": "gts/tslint.json",
+  "extends": "tslint-config-airbnb",
   "rules": {
     "variable-name": ["check-format", "allow-pascal-case"]
   }

@@ -8,16 +8,13 @@
     "test:watch": "jest --watch",
     "test:watch-coverage": "jest --watch --coverage",
     "tsc:watch": "tsc --watch",
-    "check": "gts check",
-    "clean": "gts clean",
     "compile": "tsc -p .",
-    "fix": "gts fix",
     "prepare": "npm run compile",
-    "pretest": "npm run compile; npm run fix"
+    "pretest": "npm run compile"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npx pretty-quick --staged; npm test"
     }
   },
   "repository": {
@@ -42,7 +39,10 @@
     "mongodb": "^3.1.8",
     "mongodb-memory-server": "^2.4.3",
     "mongoose": "^5.3.4",
+    "prettier": "^1.14.3",
+    "pretty-quick": "^1.8.0",
     "ts-jest": "^23.10.4",
+    "tslint-config-airbnb": "^5.11.0",
     "typescript": "~2.8.0"
   },
   "devDependencies": {}
