@@ -12,7 +12,7 @@ export interface CharacterInterface extends CharacterPrimitives,
                                             MessageHolderInterface, Document {
   owner: Types.ObjectId;
   story: Types.ObjectId;
-  location: Types.ObjectId;
+  location?: Types.ObjectId;
 }
 
 const CharacterSchema: Schema = new Schema(
@@ -42,8 +42,14 @@ const CharacterSchema: Schema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Location',
       },
-      messages: [MessageRecordSchema],
-      children: [MessageHolderSchema],
+      messages: {
+        type: [MessageRecordSchema],
+        default: [],
+      },
+      children: {
+        type: [MessageHolderSchema],
+        default: [],
+      },
     },
     {timestamps: true});
 

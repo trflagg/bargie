@@ -12,9 +12,9 @@ describe('StoryHandler', () => {
     await disconnectToTestDB();
   });
 
-  it('can create a new story', async () => {
+  it('can create a new story', () => {
     const owner = new mongoose.Types.ObjectId();
-    const story = await storyHandler.createStory(
+    const story = storyHandler.createStory(
         {
           name: 'Test Story',
           owner,

@@ -13,11 +13,11 @@ describe('CharacterHandler', () => {
     await disconnectToTestDB();
   });
 
-  it('can create a new character', async () => {
+  it('can create a new character', () => {
     const story = new StoryModel();
     const owner = new mongoose.Types.ObjectId();
 
-    const character = await characterHandler.createCharacter(
+    const character = characterHandler.createCharacter(
         {
           name: 'Test character',
           description: 'She is tall',

@@ -7,7 +7,7 @@ export interface MessageRecordInterface {
 
 export interface MessageHolderInterface {
   name: string;
-  messages: MessageRecordInterface[];
+  messages?: MessageRecordInterface[];
   children?: MessageHolderInterface[];
 }
 
