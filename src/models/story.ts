@@ -1,9 +1,12 @@
 import { Document, Model, model, Schema, Types } from "mongoose";
 
-export interface StoryInterface extends Document {
-  name: string;
+export interface StoryProps {
   owner: Types.ObjectId;
+  name: string;
+  description?: string;
 }
+
+export interface StoryInterface extends StoryProps, Document {}
 
 const StorySchema: Schema = new Schema(
   {
@@ -16,6 +19,9 @@ const StorySchema: Schema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       required: true
+    },
+    description: {
+      type: String
     }
   },
   { timestamps: true }
