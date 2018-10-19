@@ -1,4 +1,4 @@
-import {Schema} from 'mongoose';
+import { Schema } from "mongoose";
 
 export interface MessageRecordInterface {
   messageName: string;
@@ -13,13 +13,13 @@ export interface MessageHolderInterface {
 
 export const MessageRecordSchema = new Schema({
   messageName: String,
-  commandText: String,
+  commandText: String
 });
 export const MessageHolderSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
-  messages: [MessageRecordSchema],
+  messages: [MessageRecordSchema]
 });
-MessageHolderSchema.add({children: [MessageHolderSchema]});
+MessageHolderSchema.add({ children: [MessageHolderSchema] });

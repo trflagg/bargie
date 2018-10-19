@@ -1,6 +1,7 @@
 {
-  "extends": "tslint-config-airbnb",
+  "extends": ["tslint-config-airbnb", "tslint-config-prettier"],
   "rules": {
-    "variable-name": ["check-format", "allow-pascal-case"]
+    "variable-name": ["check-format", "allow-pascal-case"],
+    "no-boolean-literal-compare": true
   }
 }

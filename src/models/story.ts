@@ -1,4 +1,4 @@
-import {Document, Model, model, Schema, Types} from 'mongoose';
+import { Document, Model, model, Schema, Types } from "mongoose";
 
 export interface StoryInterface extends Document {
   name: string;
@@ -6,21 +6,24 @@ export interface StoryInterface extends Document {
 }
 
 const StorySchema: Schema = new Schema(
-    {
-      name: {
-        type: String,
-        minlength: 3,
-        maxlength: 255,
-        required: true,
-      },
-      owner: {
-        type: Schema.Types.ObjectId,
-        required: true,
-      },
+  {
+    name: {
+      type: String,
+      minlength: 3,
+      maxlength: 255,
+      required: true
     },
-    {timestamps: true});
+    owner: {
+      type: Schema.Types.ObjectId,
+      required: true
+    }
+  },
+  { timestamps: true }
+);
 
-StorySchema.index({owner: 1, name: 1});
+StorySchema.index({ owner: 1, name: 1 });
 
-export const StoryModel: Model<StoryInterface> =
-    model<StoryInterface>('Story', StorySchema);
+export const StoryModel: Model<StoryInterface> = model<StoryInterface>(
+  "Story",
+  StorySchema
+);

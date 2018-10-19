@@ -1,6 +1,6 @@
-import {hello} from '../index';
+import { hello } from "../index";
 
-it('should be true', () => {
+it("should be true", () => {
   expect(true).toBe(true);
-  expect(hello('test')).toEqual('Hello test! ');
+  expect(hello("test")).toEqual("Hello test! ");
 });

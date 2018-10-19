@@ -1,9 +1,12 @@
-import * as mongoose from 'mongoose';
+import * as mongoose from "mongoose";
 
-import {connectToTestDB, disconnectToTestDB} from '../../../test/mongoose-utils.js';
-import * as storyHandler from '../story';
+import {
+  connectToTestDB,
+  disconnectToTestDB
+} from "../../../test/mongoose-utils.js";
+import * as storyHandler from "../story";
 
-describe('StoryHandler', () => {
+describe("StoryHandler", () => {
   beforeAll(async () => {
     await connectToTestDB();
   });
@@ -12,16 +15,14 @@ describe('StoryHandler', () => {
     await disconnectToTestDB();
   });
 
-  it('can create a new story', () => {
+  it("can create a new story", () => {
     const owner = new mongoose.Types.ObjectId();
-    const story = storyHandler.createStory(
-        {
-          name: 'Test Story',
-          owner,
-        },
-    );
+    const story = storyHandler.createStory({
+      owner,
+      name: "Test Story"
+    });
     expect(story).not.toBe(null);
-    expect(story.name).toEqual('Test Story');
+    expect(story.name).toEqual("Test Story");
     expect(story.owner).toEqual(owner);
   });
 });
