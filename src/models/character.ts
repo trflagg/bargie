@@ -7,20 +7,19 @@ import {
   MessageRecordSchema
 } from "./messageHolder";
 
-export interface CharacterPrimitives {
+export interface CharacterProps {
   name: string;
+  owner: Types.ObjectId;
+  story: Types.ObjectId;
   gender?: string;
   description?: string;
+  location?: Types.ObjectId;
 }
 
 export interface CharacterInterface
-  extends CharacterPrimitives,
+  extends CharacterProps,
     MessageHolderInterface,
-    Document {
-  owner: Types.ObjectId;
-  story: Types.ObjectId;
-  location?: Types.ObjectId;
-}
+    Document {}
 
 const CharacterSchema: Schema = new Schema(
   {

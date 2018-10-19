@@ -24,6 +24,9 @@
       "jest-nyan-reporter"
     ]
   },
+  "prettier": {
+    "jsxBracketSameLine": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/trflagg/bargie.git"
