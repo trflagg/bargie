@@ -1,13 +1,15 @@
 import * as _ from "lodash";
 import { Document, Model, model, Schema, Types } from "mongoose";
 
-export interface MessageInterface extends Document {
+export interface MessageProps {
   name: string;
   text: string;
   story: Types.ObjectId;
-  compiledSource: string;
-  messagesLoaded: Types.ObjectId[];
+  compiledSource?: string;
+  messagesLoaded?: Types.ObjectId[];
 }
+
+export interface MessageInterface extends MessageProps, Document {}
 
 const MessageSchema = new Schema(
   {
