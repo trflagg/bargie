@@ -124,4 +124,69 @@ describe("CharacterHandler", () => {
       expect(foundCharacter.description).toEqual("A test description");
     });
   });
+
+  describe("getCharacter", () => {
+    it("returns character for _id and owner", async () => {
+      const character = buildCharacter();
+      character.name = "GetCharacter Test Character";
+      await character.save();
+      const owner = character.owner;
+      const _id = character._id;
+
+      const foundCharacter = (await characterHandler.getCharacter(
+        _id,
+        owner
+      )) as CharacterInterface;
+      expect(foundCharacter.name).toEqual("GetCharacter Test Character");
+    });
+
+    it("returns null if character with _id does not exist", async () => {
+      const character = buildCharacter();
+      character.name = "GetCharacter Test Character";
+      await character.save();
+      const owner = character.owner;
+      const differentId = new mongoose.Types.ObjectId();
+      expect((await characterHandler.getCharacter(
+        differentId,
+        owner
+      )) as null).toEqual(null);
+    });
+
+    it("returns null if character with owner does not exist", async () => {
+      const character = buildCharacter();
+      character.name = "GetCharacter Test Character";
+      await character.save();
+      const differentOwner = new mongoose.Types.ObjectId();
+      const _id = character._id;
+      expect((await characterHandler.getCharacter(
+        _id,
+        differentOwner
+      )) as null).toEqual(null);
+    });
+  });
+
+  describe("characters", () => {
+    it("gets all characters for an owner", async () => {
+      const owner = new mongoose.Types.ObjectId();
+      const character1 = buildCharacter();
+      character1.owner = owner;
+      await character1.save();
+      const character2 = buildCharacter();
+      character2.owner = owner;
+      character2.name = "Test Character2";
+      await character2.save();
+
+      const characters = await characterHandler.characters(owner);
+      expect(characters.length).toEqual(2);
+    });
+
+    it("returns empty array if no characters for owner", async () => {
+      const character = buildCharacter();
+      await character.save();
+      const differentOwner = new mongoose.Types.ObjectId();
+
+      const characters = await characterHandler.characters(differentOwner);
+      expect(characters.length).toEqual(0);
+    });
+  });
 });

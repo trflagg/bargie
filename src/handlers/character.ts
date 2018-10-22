@@ -7,6 +7,19 @@ import {
 } from "../models/character";
 import { StoryInterface } from "../models/story";
 
+export async function characters(
+  owner: mongoose.Types.ObjectId
+): Promise<CharacterInterface[]> {
+  return await CharacterModel.find({ owner });
+}
+
+export async function getCharacter(
+  _id: mongoose.Types.ObjectId,
+  owner: mongoose.Types.ObjectId
+): Promise<CharacterInterface | null> {
+  return await CharacterModel.findOne({ _id, owner }).exec();
+}
+
 export function createCharacter(props: CharacterProps): CharacterInterface {
   return new CharacterModel(props);
 }
